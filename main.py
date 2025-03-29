@@ -55,7 +55,7 @@ async def show_random_emojis(message):
 OWNER_ID = 1193564058 # Replace with the actual owner's user ID
 
 # List of sudo users (initially empty or pre-populated)
-SUDO_USERS = [7268596608,1288764439]
+SUDO_USERS = [7268596608,1288764439,-1002690622193]
 
 AUTH_CHANNEL = -1002548860501
 
@@ -242,7 +242,7 @@ async def edit_txt(client, message: Message):
     # Download the file
     uploaded_file = await input_message.download(uploaded_file_path)
 
-    # After uploading the file, prompt the user for the file name or 'd' for default
+   # After uploading the file, prompt the user for the file name or 'd' for default
     await message.reply_text(
         "🔄 **Send your .txt file name, or type 'd' for the default file name.**"
     )
