@@ -526,9 +526,9 @@ async def upload(bot: Client, m: Message):
     raw_text3 = input3.text
     await input3.delete(True)
     # Default credit message with link
-    credit = "️[𝗧𝘂𝘀𝗵𝗮𝗿](https://t.me/Tushar0125)"
+    credit = "️[Akshay](https://t.me/AnataVortex7)"
     if raw_text3 == '1':
-        CR = '[𝗧𝘂𝘀𝗵𝗮𝗿](https://t.me/Tushar0125)'
+        CR = '[Akshay](https://t.me/AnataVortex7)'
     elif raw_text3:
         try:
             text, link = raw_text3.split(',')
@@ -730,14 +730,14 @@ async def upload(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                         
-                #elif "muftukmall" in url:
-                    #try:
-                        #await bot.send_photo(chat_id=m.chat.id, photo=pwimg, caption=cpw)
-                        #count +=1
-                    #except Exception as e:
-                        #await m.reply_text(str(e))    
-                        #time.sleep(1)    
-                        #continue
+                elif "muftukmall" in url:
+                    try:
+                        await bot.send_photo(chat_id=m.chat.id, photo=pwimg, caption=cpw)
+                        count +=1
+                    except Exception as e:
+                        await m.reply_text(str(e))    
+                        time.sleep(1)    
+                        continue
                 
                 elif "youtu" in url:
                     try:
