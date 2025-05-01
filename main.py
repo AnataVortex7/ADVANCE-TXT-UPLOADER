@@ -608,7 +608,20 @@ async def upload(bot: Client, m: Message):
                 url = url.replace("https://appx-transcoded-videos-mcdn.akamai.net.in/videos/bhainskipathshala-data/", "")
                 name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "@").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
                 name = f'{str(count).zfill(3)}) {name1[:60]}'
-                cmd = f'yt-dlp -o "{name}.mp4" "{url}"'
+                cmd = f'yt-dlp -o "{name}.mp4" "{url}"' 
+            elif "transcoded-videos-v2.classx.co.in" in url:
+                  # Headers for CDN bypass
+                headers = {
+               'Referer': 'https://classx.co.in/',
+               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
+               'Origin': 'https://classx.co.in' }
+          
+                # Clean URL and sanitize name
+                clean_url = url.split('?')[0]
+                name1 = links[i][0].translate(str.maketrans('', '', '\\/:*?"<>|'))
+                name = f'{str(count).zfill(3)}) {name1[:55].strip()}'
+                # Build yt-dlp command
+                cmd = f'yt-dlp --no-cache-dir --retries 10 --add-header "Referer:{headers["Referer"]}" --add-header "User-Agent:{headers["User-Agent"]}" --hls-use-mpegts "{clean_url}" -o "{name}.mp4"'
 
             elif "apps-s3-jw-prod.utkarshapp.com" in url:
                 if 'enc_plain_mp4' in url:
